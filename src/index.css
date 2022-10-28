@@ -1,13 +1,30 @@
-body {
+@import url("https://fonts.googleapis.com/css2?family=Judson:wght@400;700&family=Quando&display=swap");
+
+/* font-family: 'Judson', serif;
+font-family: 'Quando', serif; */
+*,
+*::after,
+*::before {
   margin: 0;
-  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
-    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
-    sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+:root {
+  --white-color: #fefefe;
+  --dark-blue: #2d5876;
+  --light-blue: #3e79a3;
+  --text-color: #313131;
+  --text-placeholder-color: #616161;
+  --text-secondary-color: #919191;
+}
+
+body {
+  font-family: "Judson", serif;
+  color: var(--text-color);
 }
 
 code {
-  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
+  font-family: source-code-pro, Menlo, Monaco, Consolas, "Courier New",
     monospace;
 }
