@@ -1,0 +1,16 @@
+/* Slider Caption */
+
+.image-gallery-slide .image-gallery-description {
+  background: none !important;
+  bottom: auto !important;
+  color: var(--white-color) !important;
+  font-size: 30px;
+  text-shadow: 0 0 10px #211a1a;
+  left: 50% !important;
+  top: 50% !important;
+  line-height: 1;
+  padding: 10px 20px;
+  position: absolute;
+  white-space: normal;
+  transform: translate(-50%, -50%) !important;
+}
