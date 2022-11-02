@@ -1,5 +1,5 @@
 import React from "react";
-import "react-image-gallery/styles/css/image-gallery.css";
+
 import styles from "./Banner.module.css";
 import ImageGallery from "react-image-gallery";
 

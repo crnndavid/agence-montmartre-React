@@ -7,6 +7,8 @@
   justify-content: space-between;
   align-items: center;
   box-shadow: 0 0 10px var(--text-secondary-color);
+  border-radius: 0 0px 10px 10px;
+  margin-bottom: 20px;
 }
 
 .navLinks > ul {

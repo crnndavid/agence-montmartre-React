@@ -14,3 +14,19 @@
   white-space: normal;
   transform: translate(-50%, -50%) !important;
 }
+
+.presentation {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.presentation img {
+  width: 50%;
+  height: auto;
+}
+
+.about {
+  padding: 30px;
+  color: var(--text-color);
+}
