@@ -8,6 +8,7 @@ const ItemList = ({ items }) => {
         <ul>
           <li>Name: {sale.name}</li>
           <li>Price: {sale.prix}</li>
+          <li>Url: {sale.image}</li>
         </ul>
       </div>
     );

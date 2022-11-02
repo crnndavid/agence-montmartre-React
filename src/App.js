@@ -6,7 +6,11 @@ import Wrapper from "./components/Layout/Wrapper";
 import Title from "./components/UI/Title";
 import Slider from "./components/UI/Slider";
 
+import uuid from "react-uuid";
+import { ref, uploadBytes, listAll, getDownloadURL } from "firebase/storage";
 import { db } from "./firebase-config";
+
+import { storage } from "./firebase-config";
 import { collection, getDocs, addDoc } from "firebase/firestore";
 import { useState } from "react";
 import { useEffect } from "react";
@@ -17,19 +21,47 @@ function App() {
   const [sales, setSales] = useState([]);
   const [nameInput, setNameInput] = useState("");
   const [priceInput, setPriceInput] = useState(0);
+  const [fileInput, setFileInput] = useState("");
 
   const salesCollectionRef = collection(db, "ventes");
+  const imageListRef = ref(storage, "images/");
 
   const createSale = async (e) => {
     e.preventDefault();
-    await addDoc(salesCollectionRef, { name: nameInput, prix: priceInput });
+    if (fileInput === null) return;
+    const imageRef = ref(storage, `images/${fileInput.name + uuid()}`);
+    uploadBytes(imageRef, fileInput).then((snapshot) => {
+      getDownloadURL(snapshot.ref).then((url) => {
+        setFileInput(url);
+      });
+    });
+    console.log(fileInput);
+    await addDoc(salesCollectionRef, {
+      name: nameInput,
+      prix: priceInput,
+      image: fileInput,
+    });
     getSales();
+    setSales("");
+    setPriceInput(0);
+    setFileInput(null);
   };
 
   const getSales = async () => {
     const data = await getDocs(salesCollectionRef);
     setSales(data.docs.map((doc) => ({ ...doc.data(), id: doc.id })));
   };
+
+  useEffect(() => {
+    listAll(imageListRef).then((response) => {
+      response.items.forEach((item) => {
+        getDownloadURL(item).then((url) => {
+          setFileInput(url);
+        });
+      });
+    });
+  }, []);
+
   useEffect(() => {
     getSales();
     console.log("Call");
@@ -41,9 +73,10 @@ function App() {
     light: "#3e79a3",
     white: "#fefefe",
   };
-  const populateSlider = (type) => {
+  const populateSlider = (data) => {
     const result = [];
-    sales.map((sale) =>
+    if (data === undefined) return;
+    data.map((sale) =>
       result.push({
         original: sale.image,
         description: sale.name,
@@ -106,11 +139,22 @@ function App() {
         <Slider items={locations} autoPlay={true} />
       </Wrapper>
       <CreateForm
+        price={priceInput}
+        name={nameInput}
+        image={fileInput}
         onSubmit={createSale}
         onChangeName={(e) => setNameInput(e.target.value)}
         onChangePrice={(e) => setPriceInput(e.target.value)}
+        onChangeFile={(e) => setFileInput(e.target.files[0])}
       />
       <ItemList items={sales} />
+      {/* <video controls height="400px">
+        <source
+          src="https://firebasestorage.googleapis.com/v0/b/agence-montmartre.appspot.com/o/Mafia%20K'1%20Fry%20-%20Pour%20ceux%20(Clip%20officiel)-(480p).mp4?alt=media&token=cdbdf2af-52ae-4b28-ad81-703f44fb1d3e"
+          type="video/mp4"
+          autoplay
+        />
+      </video> */}
     </div>
   );
 }
