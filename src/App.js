@@ -5,27 +5,54 @@ import Navbar from "./components/Navbar";
 import Wrapper from "./components/Layout/Wrapper";
 import Title from "./components/UI/Title";
 import Slider from "./components/UI/Slider";
+
+import { db } from "./firebase-config";
+import { collection, getDocs, addDoc } from "firebase/firestore";
+import { useState } from "react";
+import { useEffect } from "react";
+import CreateForm from "./components/CreateForm";
+import ItemList from "./components/ItemList";
+
 function App() {
+  const [sales, setSales] = useState([]);
+  const [nameInput, setNameInput] = useState("");
+  const [priceInput, setPriceInput] = useState(0);
+
+  const salesCollectionRef = collection(db, "ventes");
+
+  const createSale = async (e) => {
+    e.preventDefault();
+    await addDoc(salesCollectionRef, { name: nameInput, prix: priceInput });
+    getSales();
+  };
+
+  const getSales = async () => {
+    const data = await getDocs(salesCollectionRef);
+    setSales(data.docs.map((doc) => ({ ...doc.data(), id: doc.id })));
+  };
+  useEffect(() => {
+    getSales();
+    console.log("Call");
+    console.log(populateSlider());
+  }, []);
+
   const { dark, light, white } = {
     dark: "#2d5876",
     light: "#3e79a3",
     white: "#fefefe",
   };
+  const populateSlider = (type) => {
+    const result = [];
+    sales.map((sale) =>
+      result.push({
+        original: sale.image,
+        description: sale.name,
+      })
+    );
+    return result;
+  };
 
-  const sales = [
-    {
-      original: "https://picsum.photos/id/101/1000/600/",
-      description: "Appartement 76 m2 - Paris",
-    },
-    {
-      original: "https://picsum.photos/id/103/1000/600/",
-      description: "Trouver votre location avec l'agence Montmartre",
-    },
-    {
-      original: "https://picsum.photos/id/104/1000/600/",
-      description: "Estimer votre bien avec l'agence Montmartre",
-    },
-  ];
+  const ventes = populateSlider(sales);
 
   const locations = [
     {
@@ -47,7 +74,7 @@ function App() {
       <Banner />
       <Wrapper bg={dark}>
         <Title title="Ventes - Les nouveautés" />
-        <Slider items={sales} autoPlay={true} />
+        <Slider items={ventes} autoPlay={true} />
       </Wrapper>
       <Wrapper bg={white}>
         <div className="presentation">
@@ -78,6 +105,12 @@ function App() {
         <Title title="Location - Les nouveautés" />
         <Slider items={locations} autoPlay={true} />
       </Wrapper>
+      <CreateForm
+        onSubmit={createSale}
+        onChangeName={(e) => setNameInput(e.target.value)}
+        onChangePrice={(e) => setPriceInput(e.target.value)}
+      />
+      <ItemList items={sales} />
     </div>
   );
 }

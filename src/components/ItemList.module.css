@@ -1,0 +1,13 @@
+.lists {
+  width: 100%;
+  box-shadow: 0 0 10px rgb(208, 206, 206);
+  display: flex;
+  justify-content: space-between;
+  padding: 30px;
+  margin-bottom: 10px;
+}
+
+.lists img {
+  height: 50px;
+  object-fit: contain;
+}
