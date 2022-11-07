@@ -1,0 +1,24 @@
+.formCreate {
+  background-color: var(--light-blue);
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+  padding: 50px;
+}
+
+.formCreate input {
+  padding: 10px 8px;
+}
+
+.formCreate label {
+  color: var(--white-color);
+}
+
+.formCreate button {
+  background-color: var(--dark-blue);
+  padding: 15px;
+  border: 2px solid var(--white-color);
+  color: var(--white-color);
+  text-transform: uppercase;
+  cursor: pointer;
+}

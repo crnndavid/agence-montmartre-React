@@ -1,9 +1,11 @@
 import React from "react";
 import styles from "./Navbar.module.css";
 import Logo from "../../src/assets/img/logo-agence-montmartre.svg";
+
 import { SlMenu } from "react-icons/sl";
 import { MdClear } from "react-icons/md";
 import { useState } from "react";
+import { Link } from "react-router-dom";
 const Navbar = () => {
   const [showOverlay, setShowOverlay] = useState(false);
 
@@ -13,32 +15,29 @@ const Navbar = () => {
   const toggleOverlay = () => setShowOverlay((prevState) => !prevState);
   return (
     <header className={styles.navContainer}>
-      <a href="/">
-        {" "}
+      <Link to="/">
         <img src={Logo} alt="Logo" />
-      </a>
+      </Link>
 
       <nav className={styles.navLinks}>
         <ul>
           <li>
-            <a href="#" className={styles.navLink}>
+            <Link to="/sales" className={styles.navLink}>
               Acheter
-            </a>
+            </Link>
           </li>
           <li>
-            <a href="#" className={styles.navLink}>
+            <Link to="/sales" className={styles.navLink}>
               Louer
-            </a>
+            </Link>
           </li>
           <li>
-            <a href="#" className={styles.navLink}>
+            <Link to="/about" className={styles.navLink}>
               À propos
-            </a>
+            </Link>
           </li>
           <li>
-            <a href="#" className={styles.navLink}>
-              Contact
-            </a>
+            <Link className={styles.navLink}>Contact</Link>
           </li>
         </ul>
       </nav>
@@ -59,24 +58,24 @@ const Navbar = () => {
             <img src={Logo} alt="Logo" />
             <ul>
               <li onClick={toggleOverlay}>
-                <a href="#" className={styles.navLinkOverlay}>
+                <Link to="/sales" className={styles.navLinkOverlay}>
                   Acheter
-                </a>
+                </Link>
               </li>
               <li onClick={toggleOverlay}>
-                <a href="#" className={styles.navLinkOverlay}>
+                <Link to="/sales" className={styles.navLinkOverlay}>
                   Louer
-                </a>
+                </Link>
               </li>
               <li onClick={toggleOverlay}>
-                <a href="#" className={styles.navLinkOverlay}>
+                <Link to="/about" className={styles.navLinkOverlay}>
                   À propos
-                </a>
+                </Link>
               </li>
               <li onClick={toggleOverlay}>
-                <a href="#" className={styles.navLinkOverlay}>
+                <Link to="" className={styles.navLinkOverlay}>
                   Contact
-                </a>
+                </Link>
               </li>
             </ul>
           </div>

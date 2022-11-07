@@ -1,16 +1,15 @@
 import React from "react";
+import { Link } from "react-router-dom";
 import styles from "./ItemList.module.css";
+import Item from "./Item";
 const ItemList = ({ items }) => {
-  return items.map((sale) => {
+  return items.map((item, index) => {
     return (
-      <div className={styles.lists}>
-        <img src={sale.image} alt="" />
-        <ul>
-          <li>Name: {sale.name}</li>
-          <li>Price: {sale.prix}</li>
-          <li>Url: {sale.image}</li>
-        </ul>
-      </div>
+      <Link to={`/sales/${item.id}`}>
+        <div className={styles.lists} key={index}>
+          <Item item={item} />
+        </div>
+      </Link>
     );
   });
 };

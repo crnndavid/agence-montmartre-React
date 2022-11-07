@@ -1,5 +1,5 @@
 import React from "react";
-
+import styles from "./CreateForm.module.css";
 const CreateForm = ({
   onSubmit,
   onChangeName,
@@ -9,7 +9,7 @@ const CreateForm = ({
   price,
 }) => {
   return (
-    <form onSubmit={onSubmit}>
+    <form onSubmit={onSubmit} className={styles.formCreate}>
       <label htmlFor="name">Titre</label>
       <br />
       <input type="text" onChange={onChangeName} id="name" value={name} />{" "}
