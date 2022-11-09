@@ -2,17 +2,11 @@ import "./App.css";
 import "react-image-gallery/styles/css/image-gallery.css";
 
 import Navbar from "./components/Navbar";
-
-import uuid from "react-uuid";
-import { ref, uploadBytes, getDownloadURL } from "firebase/storage";
 import { db } from "./firebase-config";
-
-import { storage } from "./firebase-config";
-import { collection, getDocs, addDoc } from "firebase/firestore";
+import { collection, getDocs } from "firebase/firestore";
 import { useState } from "react";
 import { useEffect } from "react";
-import CreateForm from "./components/CreateForm";
-import ItemList from "./components/ItemList";
+
 // React Router
 import { Route, Routes } from "react-router-dom";
 import About from "./pages/About";
@@ -21,54 +15,26 @@ import Home from "./pages/Home";
 import Sales from "./pages/Sales";
 import Sale from "./pages/Sale";
 import NotFound from "./pages/NotFound";
-
+import Rentals from "./pages/Rentals";
+import Rental from "./pages/Rental";
 function App() {
-  const [sales, setSales] = useState([]);
-  const [formatSales, setFormatSales] = useState([]);
-  const [nameInput, setNameInput] = useState("");
-  const [priceInput, setPriceInput] = useState(0);
-  const [fileInput, setFileInput] = useState();
-  const [loading, setLoading] = useState(false);
+  const [property, setProperty] = useState([]);
 
-  // const addProperty = (e) => {
-  //   e.preventDefault();
-  //   if (fileInput === null) return;
-  //   const imageRef = ref(storage, `images/${fileInput.name + uuid()}`);
-  //   uploadBytes(imageRef, fileInput).then((snapshot) => {
-  //     getDownloadURL(snapshot.ref).then((url) => {
-  //       addDoc(salesCollectionRef, {
-  //         name: nameInput,
-  //         prix: priceInput,
-  //         image: url,
-  //       }).then(() => {
-  //         fetchSales();
-  //         setSales("");
-  //         setPriceInput(0);
-  //         setFileInput(null);
-  //       });
-  //     });
-  //   });
-  // };
-
-  const salesCollectionRef = collection(db, "ventes");
   const fetchSales = async () => {
+    const salesCollectionRef = collection(db, "ventes");
     const data = await getDocs(salesCollectionRef);
-    console.log(data);
-    setSales(data.docs.map((doc) => ({ ...doc.data(), id: doc.id })));
-    // setFormatSales(populateSlider(sales));
-    console.log(sales);
+    setProperty(data.docs.map((doc) => ({ ...doc.data(), id: doc.id })));
   };
 
   useEffect(() => {
     fetchSales();
-    console.log(sales);
-    console.log("Call");
   }, []);
 
   const colors = {
     dark: "#2d5876",
     light: "#3e79a3",
     white: "#fefefe",
+    text: "#313131",
   };
   // const populateSlider = (data) => {
   //   const result = [];
@@ -93,9 +59,16 @@ function App() {
         <Route path="/" element={<Home colors={colors} />} />
         <Route path="/about" element={<About />} />
         <Route path="/sales">
-          <Route index element={<Sales items={sales} />} />
-          <Route path=":id" element={<Sale items={sales} />} />
-          <Route path="add-property" element={<AddProperty />} />
+          <Route index element={<Sales colors={colors} items={property} />} />
+          <Route path=":id" element={<Sale items={property} />} />
+          <Route
+            path="add-property"
+            element={<AddProperty colors={colors} />}
+          />
+        </Route>
+        <Route path="/rentals">
+          <Route index element={<Rentals items={property} colors={colors} />} />
+          <Route path=":id" element={<Rental items={property} />} />
         </Route>
         <Route path="*" element={<NotFound />} />
       </Routes>

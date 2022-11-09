@@ -4,11 +4,10 @@ import { getFirestore } from "@firebase/firestore";
 import { getStorage } from "firebase/storage";
 
 const firebaseConfig = {
-  apiKey: "AIzaSyAEExUOwh2nyoJd6E_hSseNJii6FVFuwzI",
-  authDomain: "agence-montmartre.firebaseapp.com",
-  databaseURL:
-    "https://agence-montmartre-default-rtdb.europe-west1.firebasedatabase.app",
-  projectId: "agence-montmartre",
+  apiKey: process.env.REACT_APP_FIREBASE_API_KEY,
+  authDomain: process.env.REACT_APP_FIREBASE_AUTH_DOMAIN,
+  databaseURL: process.env.REACT_APP_FIREBASE_DB_URL,
+  projectId: process.env.REACT_APP_FIREBASE_PROJECT_ID,
   storageBucket: "agence-montmartre.appspot.com",
   messagingSenderId: "891327565967",
   appId: "1:891327565967:web:547fc3440a442224ae20fa",

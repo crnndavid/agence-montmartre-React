@@ -27,7 +27,7 @@ const Navbar = () => {
             </Link>
           </li>
           <li>
-            <Link to="/sales" className={styles.navLink}>
+            <Link to="/rentals" className={styles.navLink}>
               Louer
             </Link>
           </li>
@@ -63,7 +63,7 @@ const Navbar = () => {
                 </Link>
               </li>
               <li onClick={toggleOverlay}>
-                <Link to="/sales" className={styles.navLinkOverlay}>
+                <Link to="/rentals" className={styles.navLinkOverlay}>
                   Louer
                 </Link>
               </li>

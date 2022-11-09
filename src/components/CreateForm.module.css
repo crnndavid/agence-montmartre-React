@@ -1,9 +1,7 @@
 .formCreate {
-  background-color: var(--light-blue);
   display: flex;
   justify-content: center;
   flex-direction: column;
-  padding: 50px;
 }
 
 .formCreate input {
@@ -17,8 +15,31 @@
 .formCreate button {
   background-color: var(--dark-blue);
   padding: 15px;
-  border: 2px solid var(--white-color);
+  border: none;
   color: var(--white-color);
   text-transform: uppercase;
   cursor: pointer;
+  border-radius: 20px;
+  box-shadow: 0 0 6px var(--light-blue);
+}
+
+.formControl {
+  display: flex;
+  flex-direction: column;
+}
+
+.formControl label {
+  font-size: 20px;
+  margin-bottom: 10px;
+  color: var(--text-color);
+}
+
+.formControl input,
+textarea,
+select {
+  padding: 10px;
+  margin-bottom: 10px;
+  border: none;
+  box-shadow: 0 0 6px var(--dark-blue);
+  border-radius: 20px;
 }

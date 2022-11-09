@@ -30,3 +30,8 @@
   padding: 30px;
   color: var(--text-color);
 }
+
+a {
+  text-decoration: none !important;
+  color: inherit;
+}

@@ -2,9 +2,10 @@ import React from "react";
 import Banner from "../components/Banner";
 import Wrapper from "../components/Layout/Wrapper";
 import Title from "../components/UI/Title";
+import Container from "react-bootstrap/Container";
 const Home = ({ colors }) => {
   return (
-    <div id="home">
+    <Container>
       <Banner />
       <Wrapper bg={colors.dark}>
         <Title title="Ventes - Les nouveautés" />
@@ -35,7 +36,7 @@ const Home = ({ colors }) => {
           </div>
         </div>
       </Wrapper>
-    </div>
+    </Container>
   );
 };
 
