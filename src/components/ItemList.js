@@ -8,9 +8,9 @@ import Col from "react-bootstrap/Col";
 const ItemList = ({ items, url }) => {
   return items.map((item, index) => {
     return (
-      <Col md={6}>
+      <Col md={6} key={index}>
         <Link to={`/${url}/${item.id}`}>
-          <article className={styles.lists} key={index}>
+          <article className={styles.lists}>
             <Item item={item} />
           </article>
         </Link>

@@ -1,0 +1,30 @@
+.searchContainer {
+  background-color: var(--dark-blue);
+  padding: 50px 20px;
+}
+
+.searchForm {
+  display: flex;
+  width: 100%;
+}
+
+.searchForm button {
+  width: 25%;
+  border: none;
+  box-shadow: 0 0 6px var(--dark-blue);
+  border-radius: 20px;
+}
+.formControl {
+  display: flex;
+}
+
+.formControl input,
+select {
+  padding: 10px;
+  border: none;
+  box-shadow: 0 0 6px var(--dark-blue);
+  border-radius: 0px;
+  margin-right: 10px;
+  width: 100%;
+  margin-bottom: 0 !important;
+}
