@@ -1,8 +1,15 @@
 .itemContainer {
   display: flex;
   flex-direction: column;
+  justify-content: center;
+  align-items: center;
 }
 
+.itemContainer button {
+  width: 100%;
+  border: none;
+  padding: 10px;
+}
 .itemContainer h2 {
   font-size: 25px;
 }

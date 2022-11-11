@@ -22,13 +22,8 @@ const Navbar = () => {
       <nav className={styles.navLinks}>
         <ul>
           <li>
-            <Link to="/sales" className={styles.navLink}>
-              Acheter
-            </Link>
-          </li>
-          <li>
-            <Link to="/rentals" className={styles.navLink}>
-              Louer
+            <Link to="/acheter-louer" className={styles.navLink}>
+              Acheter - Louer
             </Link>
           </li>
           <li>
@@ -58,13 +53,8 @@ const Navbar = () => {
             <img src={Logo} alt="Logo" />
             <ul>
               <li onClick={toggleOverlay}>
-                <Link to="/sales" className={styles.navLinkOverlay}>
-                  Acheter
-                </Link>
-              </li>
-              <li onClick={toggleOverlay}>
-                <Link to="/rentals" className={styles.navLinkOverlay}>
-                  Louer
+                <Link to="/acheter-louer" className={styles.navLinkOverlay}>
+                  Acheter - Louer
                 </Link>
               </li>
               <li onClick={toggleOverlay}>

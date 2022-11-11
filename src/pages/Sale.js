@@ -1,4 +1,5 @@
 import React from "react";
+import { useEffect } from "react";
 import Container from "react-bootstrap/Container";
 import { useParams } from "react-router-dom";
 import Item from "../components/Item";
@@ -10,7 +11,7 @@ const Sale = ({ items }) => {
 
   return (
     <Container>
-      <BreadCrumb url="sales"></BreadCrumb>
+      <BreadCrumb url="acheter-louer"></BreadCrumb>
       <Item item={property} />
     </Container>
   );

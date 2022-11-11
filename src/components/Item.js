@@ -21,6 +21,7 @@ const Item = ({ item }) => {
         </span>
 
         <p>{restricStringLenght(item.description)}</p>
+        <button>Voir en détails</button>
       </div>
     </div>
   );

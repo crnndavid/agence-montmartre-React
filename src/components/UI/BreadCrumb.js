@@ -6,7 +6,7 @@ const BreadCrumb = ({ url }) => {
   return (
     <Breadcrumb>
       <Breadcrumb.Item linkProps={{ to: `/` }} linkAs={Link}>
-        HOME
+        ACCUEIL
       </Breadcrumb.Item>
       <Breadcrumb.Item linkProps={{ to: `/${url}` }} linkAs={Link}>
         {url.toUpperCase()}

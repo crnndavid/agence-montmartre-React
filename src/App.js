@@ -12,11 +12,10 @@ import { Route, Routes } from "react-router-dom";
 import About from "./pages/About";
 import AddProperty from "./pages/AddProperty";
 import Home from "./pages/Home";
-import Sales from "./pages/Sales";
+import PropertyList from "./pages/PropertyList";
 import Sale from "./pages/Sale";
 import NotFound from "./pages/NotFound";
-import Rentals from "./pages/Rentals";
-import Rental from "./pages/Rental";
+
 function App() {
   const [property, setProperty] = useState([]);
 
@@ -36,21 +35,6 @@ function App() {
     white: "#fefefe",
     text: "#313131",
   };
-  // const populateSlider = (data) => {
-  //   const result = [];
-  //   if (data.length === 0) {
-  //     console.log("Empty array");
-  //     return;
-  //   } else {
-  //     data.map((sale) =>
-  //       result.push({
-  //         original: sale.image,
-  //         description: sale.name,
-  //       })
-  //     );
-  //   }
-  //   return result;
-  // };
 
   return (
     <div className="App">
@@ -58,17 +42,13 @@ function App() {
       <Routes>
         <Route path="/" element={<Home colors={colors} />} />
         <Route path="/about" element={<About />} />
-        <Route path="/sales">
-          <Route index element={<Sales colors={colors} items={property} />} />
+        <Route path="/acheter-louer">
+          <Route index element={<PropertyList colors={colors} />} />
           <Route path=":id" element={<Sale items={property} />} />
           <Route
             path="add-property"
             element={<AddProperty colors={colors} />}
           />
-        </Route>
-        <Route path="/rentals">
-          <Route index element={<Rentals items={property} colors={colors} />} />
-          <Route path=":id" element={<Rental items={property} />} />
         </Route>
         <Route path="*" element={<NotFound />} />
       </Routes>
