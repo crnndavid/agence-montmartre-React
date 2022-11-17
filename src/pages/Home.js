@@ -3,13 +3,14 @@ import Banner from "../components/Banner";
 import Wrapper from "../components/Layout/Wrapper";
 import Title from "../components/UI/Title";
 import Container from "react-bootstrap/Container";
-const Home = ({ colors }) => {
+import Slider from "../components/Slider";
+const Home = ({ colors, rentals, sales }) => {
   return (
     <Container>
       <Banner />
       <Wrapper bg={colors.dark}>
-        <Title title="Ventes - Les nouveautés" />
-        {/* <Slider items={formatSales} autoPlay={true} /> */}
+        <Title title="Vente - Les nouveautés" />
+        <Slider items={sales} />
       </Wrapper>
       <Wrapper bg={colors.white}>
         <div className="presentation">
@@ -35,6 +36,10 @@ const Home = ({ colors }) => {
             </p>
           </div>
         </div>
+      </Wrapper>
+      <Wrapper bg={colors.dark}>
+        <Title title="Location - Les nouveautés" />
+        <Slider items={rentals} />
       </Wrapper>
     </Container>
   );

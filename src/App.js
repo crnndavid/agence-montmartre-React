@@ -17,16 +17,37 @@ import Sale from "./pages/Sale";
 import NotFound from "./pages/NotFound";
 
 function App() {
-  const [property, setProperty] = useState([]);
+  const [allProperty, setAllProperty] = useState([]);
+  const [saleProperty, setSaleProperty] = useState([]);
+  const [rentalProperty, setRentalProperty] = useState([]);
 
   const fetchSales = async () => {
     const salesCollectionRef = collection(db, "ventes");
     const data = await getDocs(salesCollectionRef);
-    setProperty(data.docs.map((doc) => ({ ...doc.data(), id: doc.id })));
+    setAllProperty(data.docs.map((doc) => ({ ...doc.data(), id: doc.id })));
+    console.log(allProperty);
+  };
+
+  const onlyRentals = async () => {
+    const allLocation = await allProperty.filter(
+      (property) => property.type === "location"
+    );
+    console.log(allLocation);
+
+    setRentalProperty(allLocation);
+  };
+  const onlySales = async () => {
+    const allSales = allProperty.filter(
+      (property) => property.type === "vente"
+    );
+    setSaleProperty(allSales);
   };
 
   useEffect(() => {
+    console.log("Appel All");
     fetchSales();
+    onlyRentals();
+    onlySales();
   }, []);
 
   const colors = {
@@ -40,11 +61,20 @@ function App() {
     <div className="App">
       <Navbar />
       <Routes>
-        <Route path="/" element={<Home colors={colors} />} />
+        <Route
+          path="/"
+          element={
+            <Home
+              colors={colors}
+              rentals={rentalProperty}
+              sales={saleProperty}
+            />
+          }
+        />
         <Route path="/about" element={<About />} />
         <Route path="/acheter-louer">
           <Route index element={<PropertyList colors={colors} />} />
-          <Route path=":id" element={<Sale items={property} />} />
+          <Route path=":id" element={<Sale items={allProperty} />} />
           <Route
             path="add-property"
             element={<AddProperty colors={colors} />}
