@@ -1,0 +1,54 @@
+.description {
+  position: relative;
+}
+
+.bio {
+  background-color: var(--white-color);
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  padding: 20px;
+  height: 400px;
+  width: 80%;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  box-shadow: 0 0 10px gray;
+}
+
+.values {
+  padding: 100px 0;
+}
+
+.value {
+  padding: 20px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+}
+
+.value > h5 {
+  margin: 20px 0;
+  font-size: 25px;
+  color: var(--dark-blue);
+}
+
+.number {
+  text-align: center;
+}
+
+.number > h4 {
+  font-size: 50px;
+  color: var(--dark-blue);
+}
+
+.numbers > h2 {
+  text-align: center;
+  margin-bottom: 30px;
+  color: var(--dark-blue);
+}
