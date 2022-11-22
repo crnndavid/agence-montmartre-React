@@ -13,7 +13,7 @@ import About from "./pages/About";
 import AddProperty from "./pages/AddProperty";
 import Home from "./pages/Home";
 import PropertyList from "./pages/PropertyList";
-import Sale from "./pages/Sale";
+import Detail from "./pages/Detail";
 import NotFound from "./pages/NotFound";
 
 function App() {
@@ -74,7 +74,7 @@ function App() {
         <Route path="/about" element={<About />} />
         <Route path="/acheter-louer">
           <Route index element={<PropertyList colors={colors} />} />
-          <Route path=":id" element={<Sale items={allProperty} />} />
+          <Route path=":id" element={<Detail items={allProperty} />} />
           <Route
             path="add-property"
             element={<AddProperty colors={colors} />}

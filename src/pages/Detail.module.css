@@ -1,0 +1,12 @@
+.descriptionText {
+  padding: 0 20px;
+  border-right: 1px solid var(--text-secondary-color);
+}
+
+.descriptionInfo {
+  padding: 0 20px;
+}
+
+.descriptionInfo > h4 {
+  font-size: 17px;
+}

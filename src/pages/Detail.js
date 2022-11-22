@@ -5,7 +5,9 @@ import Row from "react-bootstrap/Row";
 import Col from "react-bootstrap/Col";
 import { useParams } from "react-router-dom";
 import Item from "../components/Item";
+import styles from "./Detail.module.css";
 import BreadCrumb from "../components/UI/BreadCrumb";
+import { BiArea, BiMoveVertical, BiCoin } from "react-icons/bi";
 const Sale = ({ items }) => {
   const { id } = useParams();
 
@@ -19,15 +21,28 @@ const Sale = ({ items }) => {
           <img src={property.image} alt="" width="100%" />
         </Col>
       </Row>
-      <Row>
+      <Row className="mt-4">
         <Col>
-          <h2>{property.name}</h2>
-          <h6>{property.prix}€</h6>
-          <p>{property.description}</p>
+          <div className={styles.descriptionText}>
+            <h2>{property.name}</h2>
+
+            <p>{property.description}</p>
+          </div>
         </Col>
         <Col>
-          <h4>Surface : {property.surface}m2</h4>
-          <h4>Etage: {property.stair}</h4>
+          <div className={styles.descriptionInfo}>
+            <h4>
+              <BiCoin /> {property.prix}€
+            </h4>
+            <h4>
+              <BiArea />
+              Surface : {property.surface}m2
+            </h4>
+            <h4>
+              <BiMoveVertical />
+              Etage: {property.stair}
+            </h4>
+          </div>
         </Col>
       </Row>
     </Container>
