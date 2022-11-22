@@ -15,6 +15,7 @@ import Home from "./pages/Home";
 import PropertyList from "./pages/PropertyList";
 import Detail from "./pages/Detail";
 import NotFound from "./pages/NotFound";
+import Footer from "./components/Layout/Footer";
 
 function App() {
   const [allProperty, setAllProperty] = useState([]);
@@ -82,6 +83,7 @@ function App() {
         </Route>
         <Route path="*" element={<NotFound />} />
       </Routes>
+      <Footer />
     </div>
   );
 }
