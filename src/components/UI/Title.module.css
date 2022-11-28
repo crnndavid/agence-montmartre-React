@@ -2,5 +2,7 @@
   color: var(--white-color);
   font-size: 20x;
   margin-bottom: 20px;
-  font-family: "Quando", serif;
+  font-family: "Montserrat", sans-serif;
+  font-weight: 600;
+  letter-spacing: 3px;
 }

@@ -18,7 +18,10 @@ import NotFound from "./pages/NotFound";
 import Footer from "./components/Layout/Footer";
 
 function App() {
-  const [allProperty, setAllProperty] = useState([]);
+  const [allProperty, setAllProperty] = useState(
+    JSON.parse(localStorage.getItem("property")) || []
+  );
+  // const [isLoading, setIsLoading] = useState(true);
   const [saleProperty, setSaleProperty] = useState([]);
   const [rentalProperty, setRentalProperty] = useState([]);
 
@@ -26,16 +29,17 @@ function App() {
     const salesCollectionRef = collection(db, "ventes");
     const data = await getDocs(salesCollectionRef);
     setAllProperty(data.docs.map((doc) => ({ ...doc.data(), id: doc.id })));
+    localStorage.setItem("property", JSON.stringify(allProperty));
     console.log(allProperty);
   };
 
-  const onlyRentals = async () => {
-    const allLocation = await allProperty.filter(
+  const onlyRentals = () => {
+    const allLocation = allProperty.filter(
       (property) => property.type === "location"
     );
-    console.log(allLocation);
 
     setRentalProperty(allLocation);
+    console.log(allLocation);
   };
   const onlySales = async () => {
     const allSales = allProperty.filter(
@@ -47,9 +51,14 @@ function App() {
   useEffect(() => {
     console.log("Appel All");
     fetchSales();
+    // onlyRentals();
+    // onlySales();
+  }, []);
+
+  useEffect(() => {
     onlyRentals();
     onlySales();
-  }, []);
+  }, [allProperty]);
 
   const colors = {
     dark: "#2d5876",
@@ -69,6 +78,7 @@ function App() {
               colors={colors}
               rentals={rentalProperty}
               sales={saleProperty}
+              // isLoading={isLoading}
             />
           }
         />
@@ -76,11 +86,11 @@ function App() {
         <Route path="/acheter-louer">
           <Route index element={<PropertyList colors={colors} />} />
           <Route path=":id" element={<Detail items={allProperty} />} />
-          <Route
-            path="add-property"
-            element={<AddProperty colors={colors} />}
-          />
         </Route>
+        <Route
+          path="/add-property"
+          element={<AddProperty colors={colors} fetchSales={fetchSales} />}
+        />
         <Route path="*" element={<NotFound />} />
       </Routes>
       <Footer />

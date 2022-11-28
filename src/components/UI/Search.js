@@ -11,7 +11,7 @@ const Search = ({
   category,
   setCategory,
 }) => {
-  const [disabled, setDisabled] = useState(true);
+  const [disabled, setDisabled] = useState(false);
 
   const checkIfAllFieldsAreFilled = () => {
     if (category === "" || localisation === "" || surface <= 0) {

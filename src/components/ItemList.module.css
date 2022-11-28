@@ -7,6 +7,9 @@
 }
 
 .lists img {
-  height: 50px;
   object-fit: contain;
+}
+
+.listItem > a {
+  color: var(--text-color);
 }

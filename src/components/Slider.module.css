@@ -1,7 +1,12 @@
 .slides img {
   width: 100%;
+  margin-bottom: 10px;
 }
 
 .slides > span {
+  color: var(--white-color);
+}
+
+.slides > a {
   color: var(--white-color);
 }

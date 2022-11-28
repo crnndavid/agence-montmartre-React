@@ -15,17 +15,6 @@
   transform: translate(-50%, -50%) !important;
 }
 
-.presentation {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-}
-
-.presentation img {
-  width: 50%;
-  height: auto;
-}
-
 .about {
   padding: 30px;
   color: var(--text-color);
@@ -33,5 +22,11 @@
 
 a {
   text-decoration: none !important;
-  color: inherit;
+}
+
+.splide__arrow--prev {
+  left: -2.5em !important;
+}
+.splide__arrow--next {
+  right: -2.5em !important;
 }

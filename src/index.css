@@ -1,8 +1,9 @@
 @import url("https://fonts.googleapis.com/css2?family=Judson:wght@400;700&family=Quando&display=swap");
-
+@import url("https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,400;0,700;1,400&display=swap");
 /* font-family: 'Judson', serif;
-font-family: 'Quando', serif; */
-*,
+font-family: 'Quando', serif;
+font-family: 'Montserrat', sans-serif;
+ */
 *::after,
 *::before {
   margin: 0;
@@ -20,7 +21,7 @@ font-family: 'Quando', serif; */
 }
 
 body {
-  font-family: "Judson", serif;
+  font-family: "Montserrat", sans-serif;
   color: var(--text-color);
 }
 
@@ -37,8 +38,4 @@ ul {
 
 a {
   text-decoration: none;
-}
-
-a:hover {
-  color: inherit;
 }

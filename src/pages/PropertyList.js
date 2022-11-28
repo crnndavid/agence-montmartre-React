@@ -30,9 +30,9 @@ const PropertyList = ({ colors }) => {
   const filterProperty = async () => {
     const queryProperty = query(
       salesCollectionRef,
-      where("location", "==", localisation),
-      where("type", "==", category),
-      where("surface", "<", Number(surface))
+      where("location", "==", localisation || ""),
+      where("type", "==", category || ""),
+      where("surface", "<", Number(surface) || "")
     );
     const data = await getDocs(queryProperty);
     setFilterPropertyList(
@@ -54,7 +54,7 @@ const PropertyList = ({ colors }) => {
   }, [searching]);
 
   return (
-    <Container>
+    <Container fluid="lg">
       <BreadCrumb url={url}></BreadCrumb>
       <Search
         setLocalisation={setLocalisation}

@@ -6,15 +6,11 @@ import Wrapper from "../components/Layout/Wrapper";
 import { storage } from "../firebase-config";
 import uuid from "react-uuid";
 import { ref, uploadBytes, getDownloadURL } from "firebase/storage";
-import {
-  collection,
-  getDocs,
-  addDoc,
-  serverTimestamp,
-} from "firebase/firestore";
+import { collection, addDoc, serverTimestamp } from "firebase/firestore";
 import { db } from "../firebase-config";
+import { Container } from "react-bootstrap";
 
-const AddProperty = ({ colors }) => {
+const AddProperty = ({ colors, fetchSales }) => {
   const [nameInput, setNameInput] = useState("");
   const [priceInput, setPriceInput] = useState(0);
   const [fileInput, setFileInput] = useState();
@@ -59,9 +55,10 @@ const AddProperty = ({ colors }) => {
     });
     reset();
     setSuccessMessage((prevState) => !prevState);
+    fetchSales();
   };
   return (
-    <>
+    <Container>
       <Wrapper>
         <Title title="Ajoutez un bien" color={colors.text} />
         <CreateForm
@@ -85,7 +82,7 @@ const AddProperty = ({ colors }) => {
         />
         {successMessage && <div>Property added</div>}
       </Wrapper>
-    </>
+    </Container>
   );
 };
 
