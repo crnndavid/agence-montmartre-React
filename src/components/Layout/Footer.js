@@ -2,6 +2,7 @@ import React from "react";
 import styles from "./Footer.module.css";
 import { Link } from "react-router-dom";
 import Logo from "../../assets/img/logo-agence-montmartre.svg";
+
 const Footer = () => {
   return (
     <>
@@ -14,14 +15,12 @@ const Footer = () => {
             <li className={styles.footerLink}>
               <Link to="/acheter-louer"> Acheter-Louer </Link>
             </li>
-            <li className={styles.footerLink}>
-              <Link to="/acheter-louer"> Estimation </Link>
-            </li>
+
             <li className={styles.footerLink}>
               <Link to="/about"> À propos </Link>
             </li>
             <li className={styles.footerLink}>
-              <Link to="/add-property"> Ajouter un bien </Link>
+              <Link to="/add-property">Ajouter un bien</Link>
             </li>
           </ul>
         </div>

@@ -32,7 +32,9 @@ const Navbar = () => {
             </Link>
           </li>
           <li>
-            <Link className={styles.navLink}>Contact</Link>
+            <Link to="/add-property" className={styles.navLink}>
+              Ajouter un bien
+            </Link>
           </li>
         </ul>
       </nav>
@@ -63,8 +65,8 @@ const Navbar = () => {
                 </Link>
               </li>
               <li onClick={toggleOverlay}>
-                <Link to="" className={styles.navLinkOverlay}>
-                  Contact
+                <Link to="/add-property" className={styles.navLink}>
+                  Ajouter un bien
                 </Link>
               </li>
             </ul>
