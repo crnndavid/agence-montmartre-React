@@ -91,6 +91,7 @@ function App() {
           path="/add-property"
           element={<AddProperty colors={colors} fetchSales={fetchSales} />}
         />
+
         <Route path="*" element={<NotFound />} />
       </Routes>
       <Footer />
